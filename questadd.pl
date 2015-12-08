@@ -37,9 +37,8 @@ $last_question_number = sprintf ("%02d", $last_question_number);
 
 $perl_data->{$last_question_number}{question} = "Тестов въпрос";
 $perl_data->{$last_question_number}{question_type} = "facts";
-$perl_data->{$last_question_number}{answer_type} = "open";
-$perl_data->{$last_question_number}{answers} = "";
 $perl_data->{$last_question_number}{date} = "1300";
+$perl_data->{$last_question_number}{answers} = "";
 
 
 my $pretty_json_data = $json_object->pretty->sort_by(sub {$JSON::PP::a cmp $JSON::PP::b})->encode($perl_data);
