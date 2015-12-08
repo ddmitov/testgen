@@ -34,14 +34,16 @@ my @all_valid_question_numbers;
 for (my $number=1; $number <= 99; $number++) {
 	$number = sprintf ("%02d", $number);
 	if (defined ($perl_data->{$number})) {
-		my $question_type = $perl_data->{$number}{question_type};
-		if ($question_type =~ "closed") {
-			$number_of_available_closed_questions++;
-			push @all_valid_question_numbers, $number;
-		}
-		if ($question_type =~ "open") {
-			$number_of_available_open_questions++;
-			push @all_valid_question_numbers, $number;
+		if (length ($perl_data->{$number}->{question}) > 0) {
+			my $question_type = $perl_data->{$number}{question_type};
+			if ($question_type =~ "closed") {
+				$number_of_available_closed_questions++;
+				push @all_valid_question_numbers, $number;
+			}
+			if ($question_type =~ "open") {
+				$number_of_available_open_questions++;
+				push @all_valid_question_numbers, $number;
+			}
 		}
 	}
 }
