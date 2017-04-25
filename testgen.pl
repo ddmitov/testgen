@@ -109,7 +109,7 @@ for (my $test_number=1; $test_number <= $number_of_wanted_tests; $test_number++)
 						my $random_answer_number = $all_variant_numbers [rand @all_variant_numbers];
 
 						my $random_answer_index = first_index {$_ eq $random_answer_number} @all_variant_numbers;
-						if (scalar @all_variant_numbers > 1) {
+						if (scalar @all_variant_numbers > 0) {
 							splice @all_variant_numbers, $random_answer_index, 1;
 						}
 
@@ -143,7 +143,7 @@ for (my $test_number=1; $test_number <= $number_of_wanted_tests; $test_number++)
 								date => $date};
 
 				my $random_question_index = first_index {$_ eq $random_question_number} @all_question_numbers;
-				if (scalar @all_question_numbers > 1) {
+				if (scalar @all_question_numbers > 0) {
 					splice @all_question_numbers, $random_question_index, 1;
 				}
 			}
@@ -166,7 +166,7 @@ for (my $test_number=1; $test_number <= $number_of_wanted_tests; $test_number++)
 				push @questions, {question => $random_question, date => $date};
 
 				my $random_question_index = first_index {$_ eq $random_question_number} @all_question_numbers;
-				if (scalar @all_question_numbers > 1) {
+				if (scalar @all_question_numbers > 0) {
 					splice @all_question_numbers, $random_question_index, 1;
 				}
 			}
@@ -188,7 +188,7 @@ for (my $test_number=1; $test_number <= $number_of_wanted_tests; $test_number++)
 			print "в) $sorted_questions[$sorted_question_number]{variant_c}, ";
 		}
 		if (defined ($sorted_questions[$sorted_question_number]{variant_d})) {
-			my $answer = "г) ".$sorted_questions[$sorted_question_number]{variant_a}.".\n";
+			my $answer = "г) ".$sorted_questions[$sorted_question_number]{variant_d}.".\n";
 			$answer =~ s/\.\.\n/\.\n/;
 			print $answer;
 		}
