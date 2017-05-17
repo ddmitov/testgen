@@ -103,12 +103,9 @@ for (my $test_number = 1; $test_number <= $wanted_tests; $test_number++) {
         if ($question_type !~ "chronology") {
           my @range = (1 .. 4);
           my @uniq_numbers;
-
           until (scalar @uniq_numbers == scalar @range) {
             my $random_number = $range[rand(@range)];
-            if (grep /$random_number/, @uniq_numbers) {
-              $random_number = $range[rand(@range)];
-            } else {
+            if (not grep /$random_number/, @uniq_numbers) {
               push @uniq_numbers, $random_number;
             }
           }
