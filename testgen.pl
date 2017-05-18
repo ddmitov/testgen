@@ -11,11 +11,9 @@ use JSON::PP;
 # https://www.stormconsultancy.co.uk/blog/development/code-snippets/perl-sorting-an-array-of-hashes/
 
 ##################################################
-
 my $wanted_tests = 10;
 my $wanted_open_questions = 5;
 my $wanted_closed_questions = 5;
-
 ##################################################
 
 my $file = $ARGV[0];
@@ -94,7 +92,6 @@ for (my $test_number = 1; $test_number <= $wanted_tests; $test_number++) {
 
       if ($question_type =~ "closed") {
         $closed_questions++;
-
         my $variant_a;
         my $variant_b;
         my $variant_c;
@@ -117,7 +114,7 @@ for (my $test_number = 1; $test_number <= $wanted_tests; $test_number++) {
           $variant_c =
             $test_data->{$random_question_number}{answers}{$uniq_numbers[2]};
           $variant_d =
-            $test_data->{$random_question_number}{answers}{$uniq_numbers[3]};;
+            $test_data->{$random_question_number}{answers}{$uniq_numbers[3]};
         } else {
           $variant_a = $test_data->{$random_question_number}{answers}{1};
           $variant_b = $test_data->{$random_question_number}{answers}{2};
@@ -159,7 +156,10 @@ for (my $test_number = 1; $test_number <= $wanted_tests; $test_number++) {
 
   for my $question_number (0 .. $#sorted_questions) {
     my $real_question_number = $question_number + 1;
-    print "$real_question_number. $sorted_questions[$question_number]{question}\n";
+    my $question =
+      $real_question_number.". ".$sorted_questions[$question_number]{question};
+    print "$question\n";
+
     if (defined ($sorted_questions[$question_number]{variant_a})) {
       print "а) $sorted_questions[$question_number]{variant_a}, ";
     }
@@ -175,6 +175,7 @@ for (my $test_number = 1; $test_number <= $wanted_tests; $test_number++) {
       $answer =~ s/\.\.\n/\.\n/;
       print $answer;
     }
+
     print "\n";
   }
 }
