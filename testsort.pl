@@ -92,7 +92,7 @@ my $final_data;
 foreach my $final_question (@final_questions) {
   my $pretty_json_data =
     $json_object->pretty->sort_by(
-      sub {$JSON::PP::b cmp $JSON::PP::a})->encode($final_question);
+      sub {$JSON::PP::a cmp $JSON::PP::b})->encode($final_question);
   $final_data = $final_data.$pretty_json_data;
 }
 
