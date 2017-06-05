@@ -5,13 +5,10 @@ use warnings;
 use JSON::PP;
 
 # http://perlmaven.com/perl-arrays
-# http://perlmaven.com/splice-to-slice-and-dice-arrays-in-perl
-# http://perlmaven.com/how-to-get-index-of-element-in-array
-# http://www.perlmonks.org/?node_id=50396
 # https://www.stormconsultancy.co.uk/blog/development/code-snippets/perl-sorting-an-array-of-hashes/
 
 ##################################################
-my $wanted_tests = 10;
+my $wanted_tests = 5;
 my $wanted_open_questions = 5;
 my $wanted_closed_questions = 5;
 ##################################################
@@ -26,8 +23,8 @@ close $filehandle;
 my $json_object = new JSON::PP;
 my $questions = $json_object->decode($json_data);
 
-my $available_closed_questions;
-my $available_open_questions;
+my $available_closed_questions = 0;
+my $available_open_questions = 0;
 my @question_numbers;
 
 for (my $number = 1; $number <= 99; $number++) {
