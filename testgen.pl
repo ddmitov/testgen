@@ -8,7 +8,7 @@ use JSON::PP;
 # https://www.stormconsultancy.co.uk/blog/development/code-snippets/perl-sorting-an-array-of-hashes/
 
 ##################################################
-my $wanted_tests = 5;
+my $wanted_tests = 10;
 my $wanted_open_questions = 5;
 my $wanted_closed_questions = 5;
 ##################################################
