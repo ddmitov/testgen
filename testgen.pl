@@ -4,7 +4,7 @@ use strict;
 use warnings;
 use JSON::PP;
 
-# http://perlmaven.com/perl-arrays
+# https://perlmaven.com/perl-arrays
 # https://www.stormconsultancy.co.uk/blog/development/code-snippets/perl-sorting-an-array-of-hashes/
 
 ##################################################
