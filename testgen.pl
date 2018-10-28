@@ -4,6 +4,7 @@ use strict;
 use warnings;
 use JSON::PP;
 
+# CREDITS:
 # https://perlmaven.com/perl-arrays
 # https://www.stormconsultancy.co.uk/blog/development/code-snippets/perl-sorting-an-array-of-hashes/
 
@@ -15,7 +16,7 @@ my $wanted_closed_questions = 5;
 
 my $file = $ARGV[0];
 open my $filehandle, '<', $file or
-  die "File not found. Aborting";
+  die "Файлът не е намерен!";
 $/ = undef;
 my $json_data = <$filehandle>;
 close $filehandle;
@@ -160,12 +161,15 @@ for (my $test_number = 1; $test_number <= $wanted_tests; $test_number++) {
     if (defined ($sorted_questions[$question_number]{variant_a})) {
       print "а) $sorted_questions[$question_number]{variant_a}, ";
     }
+
     if (defined ($sorted_questions[$question_number]{variant_b})) {
       print "б) $sorted_questions[$question_number]{variant_b}, ";
     }
+
     if (defined ($sorted_questions[$question_number]{variant_c})) {
       print "в) $sorted_questions[$question_number]{variant_c}, ";
     }
+
     if (defined ($sorted_questions[$question_number]{variant_d})) {
       my $answer =
         "г) ".$sorted_questions[$question_number]{variant_d}.".\n";
