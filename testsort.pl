@@ -28,8 +28,8 @@ for (my $number = 1; $number <= 99; $number++) {
       my $question = $questions->{$number}{question};
 
       if ($question_type =~ "closed") {
-        push @questions,
-          {question_type => $question_type,
+        push @questions, {
+          question_type => $question_type,
           date => $date,
           question => $question,
           answers => {
@@ -37,14 +37,14 @@ for (my $number = 1; $number <= 99; $number++) {
             2 => $questions->{$number}{answers}{2},
             3 => $questions->{$number}{answers}{3},
             4 => $questions->{$number}{answers}{4}
-            }
-          };
+          }
+        };
       } else {
-        push @questions,
-          {question_type => $question_type,
-            date => $date,
-            question => $question
-          };
+        push @questions, {
+          question_type => $question_type,
+          date => $date,
+          question => $question
+        };
       }
     }
   }
@@ -64,8 +64,8 @@ foreach my $question (@sorted_questions) {
   my $question_text = $question->{question};
 
   if ($question_type =~ "closed") {
-    push @final_questions,
-      {$formatted_number => {
+    push @final_questions, {
+      $formatted_number => {
         question_type => $question_type,
         date => $date,
         question => $question_text,
@@ -74,17 +74,17 @@ foreach my $question (@sorted_questions) {
           2 => $question->{answers}{2},
           3 => $question->{answers}{3},
           4 => $question->{answers}{4}
-          }
         }
-      };
+      }
+    };
   } else {
-    push @final_questions,
-      {$formatted_number => {
-          question_type => $question_type,
-          date => $date,
-          question => $question_text
-        }
-      };
+    push @final_questions, {
+      $formatted_number => {
+        question_type => $question_type,
+        date => $date,
+        question => $question_text
+      }
+    };
   }
 }
 
@@ -93,13 +93,13 @@ my $final_data;
 foreach my $final_question (@final_questions) {
   my $pretty_json_data =
     $json_object->pretty->sort_by(
-      sub {$JSON::PP::a cmp $JSON::PP::b})->encode($final_question);
+      sub {$JSON::PP::b cmp $JSON::PP::a})->encode($final_question);
   $final_data = $final_data.$pretty_json_data;
 }
 
 $final_data =~ s/\}\n\}\n\{/\},\n/g;
 
 open my $output_filehandle, ">", $filename or
-  die "File not found. Aborting";
+  die "Can not recreate file. Aborting";
 print $output_filehandle $final_data;
 close $output_filehandle;
