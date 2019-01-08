@@ -84,9 +84,9 @@ for (my $test_number = 1; $test_number <= $wanted_tests; $test_number++) {
     my $random_question_number = $question_numbers [rand @question_numbers];
 
     if (defined ($test_data->{$random_question_number})) {
+      my $date = $test_data->{$random_question_number}{date};
       my $random_question = $test_data->{$random_question_number}{question};
       my $question_type = $test_data->{$random_question_number}{question_type};
-      my $date = $test_data->{$random_question_number}{date};
 
       if ($question_type =~ "closed") {
         $closed_questions++;
@@ -106,18 +106,18 @@ for (my $test_number = 1; $test_number <= $wanted_tests; $test_number++) {
           }
 
           $variant_a =
-            $test_data->{$random_question_number}{answers}{$uniq_numbers[0]};
+            $test_data->{$random_question_number}{variants}{$uniq_numbers[0]};
           $variant_b =
-            $test_data->{$random_question_number}{answers}{$uniq_numbers[1]};
+            $test_data->{$random_question_number}{variants}{$uniq_numbers[1]};
           $variant_c =
-            $test_data->{$random_question_number}{answers}{$uniq_numbers[2]};
+            $test_data->{$random_question_number}{variants}{$uniq_numbers[2]};
           $variant_d =
-            $test_data->{$random_question_number}{answers}{$uniq_numbers[3]};
+            $test_data->{$random_question_number}{variants}{$uniq_numbers[3]};
         } else {
-          $variant_a = $test_data->{$random_question_number}{answers}{1};
-          $variant_b = $test_data->{$random_question_number}{answers}{2};
-          $variant_c = $test_data->{$random_question_number}{answers}{3};
-          $variant_d = $test_data->{$random_question_number}{answers}{4};
+          $variant_a = $test_data->{$random_question_number}{variants}{1};
+          $variant_b = $test_data->{$random_question_number}{variants}{2};
+          $variant_c = $test_data->{$random_question_number}{variants}{3};
+          $variant_d = $test_data->{$random_question_number}{variants}{4};
         }
 
         push @questions,
@@ -137,9 +137,9 @@ for (my $test_number = 1; $test_number <= $wanted_tests; $test_number++) {
     my $random_question_number = $question_numbers[rand @question_numbers];
 
     if (defined ($test_data->{$random_question_number})) {
+      my $date = $test_data->{$random_question_number}{date};
       my $random_question = $test_data->{$random_question_number}{question};
       my $question_type = $test_data->{$random_question_number}{question_type};
-      my $date = $test_data->{$random_question_number}{date};
 
       if ($question_type =~ "open") {
         $open_questions++;
