@@ -1,31 +1,31 @@
 {
   "01" : {
-    "question_type" : "closed",
-    "question" : "",
     "date" : "",
-    "answers" : {
-      "4" : "",
-      "3" : "",
+    "question" : "",
+    "question_type" : "closed",
+    "variants" : {
+      "1" : "",
       "2" : "",
-      "1" : ""
+      "3" : "",
+      "4" : ""
     }
   },
 
   "02" : {
-     "question_type" : "chronology_closed",
-     "question" : "",
      "date" : "",
-     "answers" : {
-        "4" : "",
-        "3" : "",
+     "question" : "",
+     "question_type" : "chronology_closed",
+     "variants" : {
+        "1" : "",
         "2" : "",
-        "1" : ""
+        "3" : "",
+        "4" : ""
      }
   },
 
   "03" : {
-    "question_type" : "open",
+    "date" : "",
     "question" : "",
-    "date" : ""
+    "question_type" : "open"
   }
 }

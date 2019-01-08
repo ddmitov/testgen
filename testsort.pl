@@ -4,8 +4,12 @@ use strict;
 use warnings;
 use JSON::PP;
 
+# To sort all files in a directory recursively:
+# for file in $(find . -type f -name '*.json'); do ./testsort.pl $file; done
+
 # CREDITS:
 # https://www.stormconsultancy.co.uk/blog/development/code-snippets/perl-sorting-an-array-of-hashes/
+# https://unix.stackexchange.com/questions/4382/how-to-open-multiple-files-from-find-output
 
 my $filename = $ARGV[0];
 open my $filehandle, '<', $filename or
@@ -29,21 +33,21 @@ for (my $number = 1; $number <= 99; $number++) {
 
       if ($question_type =~ "closed") {
         push @questions, {
-          question_type => $question_type,
           date => $date,
           question => $question,
-          answers => {
-            1 => $questions->{$number}{answers}{1},
-            2 => $questions->{$number}{answers}{2},
-            3 => $questions->{$number}{answers}{3},
-            4 => $questions->{$number}{answers}{4}
+          question_type => $question_type,
+          variants => {
+            1 => $questions->{$number}{variants}{1},
+            2 => $questions->{$number}{variants}{2},
+            3 => $questions->{$number}{variants}{3},
+            4 => $questions->{$number}{variants}{4}
           }
         };
       } else {
         push @questions, {
-          question_type => $question_type,
           date => $date,
-          question => $question
+          question => $question,
+          question_type => $question_type
         };
       }
     }
@@ -66,23 +70,23 @@ foreach my $question (@sorted_questions) {
   if ($question_type =~ "closed") {
     push @final_questions, {
       $formatted_number => {
-        question_type => $question_type,
         date => $date,
         question => $question_text,
-        answers => {
-          1 => $question->{answers}{1},
-          2 => $question->{answers}{2},
-          3 => $question->{answers}{3},
-          4 => $question->{answers}{4}
+        question_type => $question_type,
+        variants => {
+          1 => $question->{variants}{1},
+          2 => $question->{variants}{2},
+          3 => $question->{variants}{3},
+          4 => $question->{variants}{4}
         }
       }
     };
   } else {
     push @final_questions, {
       $formatted_number => {
-        question_type => $question_type,
         date => $date,
-        question => $question_text
+        question => $question_text,
+        question_type => $question_type
       }
     };
   }
@@ -93,7 +97,7 @@ my $final_data;
 foreach my $final_question (@final_questions) {
   my $pretty_json_data =
     $json_object->pretty->sort_by(
-      sub {$JSON::PP::b cmp $JSON::PP::a})->encode($final_question);
+      sub {$JSON::PP::a cmp $JSON::PP::b})->encode($final_question);
   $final_data = $final_data.$pretty_json_data;
 }
 
